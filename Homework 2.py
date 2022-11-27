@@ -12,7 +12,6 @@ for i in range(x + 1, y):
     if i % 2 == 0 == i % 3:
         print(i, sep=",", end=" ")
 
-
 """
 2) Вводим с клавиатуры целое число X
 Далее вводим Х целых чисел.
@@ -25,7 +24,8 @@ if max2 > max1:
     max1, max2 = max2, max1
 
 for i in range(2, counter):
-    if counter == 2: break
+    if counter == 2:
+        break
     else:
         num = int(input(f'Введите {i + 1} число >>> '))
         if num > max1:
@@ -36,25 +36,49 @@ for i in range(2, counter):
 print(f'Первое максимальное число {max1}\n'
       f'Второе максимальное число {max2}')
 
-
 """
 3) Вводим с клавиатуры целое число - это зарплата.
 Нужно вывести в консоль - Минимальное кол-во купюр, которыми можно выдать ЗП.
 И сколько бухгалтер выдаст 25 рублевых, 10 рублевых, 3 рублевых и 1 рублевых купюр
 """
+
+
+def count_banknotes(count25, salary):
+    count10, count3, count1 = 0, 0, 0
+
+    salary -= count25 * 25
+    count10 = salary // 10
+    salary -= count10 * 10
+    count3 = salary // 3
+    count1 = salary - count3 * 3
+
+    total_count = count1 + count3 + count10 + count25
+    summary = (f'Минимальное количество купюр, которыми можно выдать зарплату - {total_count}.\n'
+               f'25 рублевыми купюрами - {count25} шт.\n'
+               f'10 рублевыми купюрами - {count10} шт.\n'
+               f'3 рублевыми купюрами - {count3} шт.\n'
+               f'1 рублевыми купюрами - {count1} шт.')
+
+    return total_count, summary
+
+
+# Задаем зарплату и высчитываем максимальное число 25-рублевых купюр
 salary = int(input('Выдать зарплату в размере: '))
-banknote_count = 0
-total_count = 0
+count25 = salary // 25
 
-for nominal in 25, 10, 3, 1:
-    banknote_count = salary // nominal
-    print(f'{nominal} рублевыми купюрами - {banknote_count} шт.')
+# Проверка 2 вариантов - с максимальным количеством 25-рублевок и на 1 меньше
+res1 = count_banknotes(count25, salary)
 
-    total_count += banknote_count
-    salary -= banknote_count * nominal
+if count25 == 0:
+    count25 += 1  # Если 0, то чтобы на следующей строке не вышло отрицательное число
+res2 = count_banknotes(count25 - 1, salary)
 
-print(f'Минимальное количество купюр, которыми можно выдать зарплату - {total_count}.')
-
+# Если вариант с уменьшенным количеством 25-рублевок выдал меньшее итоговое количество купюр,
+# принимаем данный вариант и выводим расчет по нему. Иначе: выводим расчет по первому варианту.
+if res2[0] < res1[0]:
+    print(res2[1])
+else:
+    print(res1[1])
 
 """
 4) Вводим с клавиатуры многозначное число
