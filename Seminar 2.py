@@ -58,6 +58,7 @@ else: print('Три')
 """
 import time
 import click
+import pyglet
 
 event = input('Задайте напоминание: \n')
 print()
@@ -77,6 +78,30 @@ for value in range(seconds, 0, -1):
     time.sleep(1)
     click.clear()
 else: print(event)
+
+# Вариант 2 от Михаила Лихачева
+print('It`s timer.')
+timer = input('Write time as format: HH:MM:SS \n')
+time_str = timer.split(':')
+all_times = []
+for i in time_str:
+    all_times.append(int(i))
+song = pyglet.media.load('C:/Users/Mi/Desktop/Completed.mp3')
+
+for i in range(all_times[0], -1, -1):
+    for j in range(all_times[1], -1, -1):
+        for l in range(all_times[2], -1, -1):
+            if (i == 0 and j == 0) and l == 0:
+                song.play()
+                pyglet.app.run()
+            else:
+                print(f'{i}:{j}:{l}')
+                time.sleep(1)
+            all_times[2] -= 1
+        all_times[1] -= 1
+        all_times[2] += 60
+    all_times[0] -= 1
+    all_times[1] += 60
 
 """
 5) Решить следующую задачу, которая вычисляет наибольший общий делитель двух целых чисел
