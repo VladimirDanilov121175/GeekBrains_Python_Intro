@@ -1,3 +1,4 @@
+# Домашнее задание ко 2 семинару
 """
 1) Вводим с клавиатуры целое число X и У.
 Выводим на экран количество чисел между Х и У, которые делятся на 2 и 3
@@ -10,6 +11,7 @@ if y < x: x, y = y, x
 for i in range(x + 1, y):
     if i % 2 == 0 == i % 3:
         print(i, sep=",", end=" ")
+
 
 """
 2) Вводим с клавиатуры целое число X
@@ -34,28 +36,25 @@ for i in range(2, counter):
 print(f'Первое максимальное число {max1}\n'
       f'Второе максимальное число {max2}')
 
+
 """
 3) Вводим с клавиатуры целое число - это зарплата.
 Нужно вывести в консоль - Минимальное кол-во купюр, которыми можно выдать ЗП.
 И сколько бухгалтер выдаст 25 рублевых, 10 рублевых, 3 рублевых и 1 рублевых купюр
 """
 salary = int(input('Выдать зарплату в размере: '))
-banknotes = {25: 0, 10: 0, 3: 0, 1: 0}
+banknote_count = 0
 total_count = 0
 
-while salary != 0:
-    for nominal in banknotes:
-        if salary % nominal != 0:
-            continue
-        else:
-            banknotes[nominal] += 1
-            total_count += 1
-            salary = salary - nominal
-            break
+for nominal in 25, 10, 3, 1:
+    banknote_count = salary // nominal
+    print(f'{nominal} рублевыми купюрами - {banknote_count} шт.')
 
-print(f'Минимальное количество купюр, которыми можно выдать зарплату - {total_count}. Из них:')
-for nominal in banknotes:
-    print(f'{nominal} рублевыми купюрами - {banknotes[nominal]} шт.')
+    total_count += banknote_count
+    salary -= banknote_count * nominal
+
+print(f'Минимальное количество купюр, которыми можно выдать зарплату - {total_count}.')
+
 
 """
 4) Вводим с клавиатуры многозначное число
@@ -70,5 +69,5 @@ while num > 10:
         print('Последовательность цифр в этом числе не упорядочена по возрастанию')
         break
     num = num // 10
-else:
-    print('Последовательность цифр в этом числе упорядочена по возрастанию')
+# else:
+#     print('Последовательность цифр в этом числе упорядочена по возрастанию')
