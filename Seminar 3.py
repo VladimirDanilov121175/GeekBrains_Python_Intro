@@ -5,7 +5,7 @@ res = ''
 
 while num != 0:
     div = num // 2
-    res += str(num - div * 2)
+    res = str(num - div * 2) + res
     num = div
 print(res)
 
