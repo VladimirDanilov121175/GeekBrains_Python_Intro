@@ -42,7 +42,6 @@ def second_square(x, y, direction):
         else:
             return [x - 1, y]
 
-
 # End of function
 
 
@@ -86,12 +85,6 @@ ship_count = len(single_ships) + len(double_ships)
 torpedo_count = 0
 previous_shots = []
 
-# print(used_squares)
-print(double_ships)
-print(single_ships)
-
-
-# exit()
 
 # ****************************************************************
 # Let's the battle begin!
@@ -120,9 +113,6 @@ def check_errors(coordinates):
 while ship_count:
     user_try = input('\nТвой выстрел! Введи координаты от 0 до 4 через пробел: ')
     user_try = check_errors(user_try)
-    print(user_try)
-    print(used_squares)
-    print (single_ships)
 
     if user_try in previous_shots:
         print('Такой выстрел уже был!')
