@@ -9,14 +9,14 @@ sea = [['.\t' for _ in range(5)] for _ in range(5)]
 
 
 # Output of current state on the battlefield
-def show_buttlefield():
+def show_battlefield():
     for e in sea:
         for j in e:
             print(j, end='')
         print()
 
 
-show_buttlefield()
+show_battlefield()
 
 # Create 4 ships
 ships = [(randint(0, 4), randint(0, 4))]
@@ -49,7 +49,7 @@ def check_range(coordinates):
 
 while ship_count:
     # print(ships)
-    user_try = input('\nТвой выстрел! Введите координаты от 0 до 4 через пробел: ')
+    user_try = input('\nТвой выстрел! Введи координаты от 0 до 4 через пробел: ')
     user_try = check_range(user_try)
     if user_try in previous_shots:
         print('Такой выстрел уже был!')
@@ -62,7 +62,7 @@ while ship_count:
         print(f'Мимо!')
     torpedo_count += 1
     previous_shots.append(user_try)
-    show_buttlefield()
+    show_battlefield()
 else:
     print(f'\nПобеда! Все корабли противника затоплены!\n'
           f'Расход {torpedo_count} торпед')
