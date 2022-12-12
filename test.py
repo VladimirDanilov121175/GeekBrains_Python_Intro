@@ -1,9 +1,10 @@
-from random import randint
 import time
+import sys
 
-def animate_explosion():
-    for char in '⋆*∎♦ ♦∎*⋆':
-        print(char)
-        time.sleep(.1)
+for remaining in range(10, 0, -1):
+    sys.stdout.write("\r")
+    sys.stdout.write("{:2d} seconds remaining.".format(remaining))
+    sys.stdout.flush()
+    time.sleep(1)
 
-animate_explosion()
+sys.stdout.write("\rComplete!            \n")

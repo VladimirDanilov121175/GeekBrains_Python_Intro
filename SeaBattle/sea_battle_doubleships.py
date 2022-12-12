@@ -3,8 +3,8 @@ import time
 
 
 def show_battlefield(count1, count2):
-    print('\nТвое поле\t\t\t\tПоле противника')
-    print(f'Кораблей: {count1}\t\t\t\tКораблей: {count2}\n')
+    print('\nТвое поле\t\t\t\t\t\tПоле противника')
+    print(f'Кораблей: {count1}\t\t\t\t\t\tКораблей: {count2}\n')
     for e in sea:
         for j in e:
             print(j, end='\t')
@@ -20,7 +20,7 @@ def create_battlefield():
     for _ in range(2):
         for i in range(1, 6):
             battlefield[0].append(str(i))
-        battlefield[0].append('\t')
+        battlefield[0].append('\t\t')
 
     for i in 'ABCDE':
         battlefield.append([i])
@@ -30,7 +30,7 @@ def create_battlefield():
             if i == 0:
                 for _ in range(5):
                     char.append('⋆')
-                char.append(f'\t{char[0]}')
+                char.append(f'\t\t{char[0]}')
                 for _ in range(5):
                     char.append('≈')
     return battlefield
@@ -179,9 +179,10 @@ def comp_shot():
 
     conv = '.ABCDE'[shot[0]] + str(shot[1])
     print('Компьютер думает', end='')
-    for i in range(5):
+    for i in range(6):
         time.sleep(.5)
         print('.', end='')
+    print()
 
     if shot not in used_squares:
         x, y = shot
