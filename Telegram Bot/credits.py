@@ -1,0 +1,2 @@
+bot_token = 'YOUR_TOKEN'
+API_key = '4321a3d417b53045aa1b6617c529c910'

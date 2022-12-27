@@ -1,9 +1,9 @@
-from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler
 from bot_commands import *
+import credits
 
 
-app = ApplicationBuilder().token("your_token_here").build()
+app = ApplicationBuilder().token(credits.bot_token).build()
 
 app.add_handler(CommandHandler("hi", hi_command))
 app.add_handler(CommandHandler("help", help_command))
